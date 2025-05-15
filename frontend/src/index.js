@@ -17,8 +17,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "App";
-import { Web3Provider } from "./contexts/Web3Context";
-
 // Material Dashboard 2 React Context Provider
 import { MaterialUIControllerProvider } from "context";
 
@@ -28,9 +26,7 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
     <MaterialUIControllerProvider>
-      <Web3Provider>
-        <App />
-      </Web3Provider>
+      <App />
     </MaterialUIControllerProvider>
   </BrowserRouter>
 );

@@ -1,3 +1,5 @@
-Compiled 1 Solidity file successfully (evm target: paris).
-Deploying contracts with account: 0x6b4d6332E61cc59080568E81eeF37Ec103aD757B
-MyContract deployed to: 0x0080D0DBf3b0b5f8B9D8659B08144DAbc7db4A10
+✅  CarbonCreditToken deployed at 0x450c7a02d11Dd38379B8C20968dd41FfD9AB81F9
+✅  CarbonCreditSystem deployed at 0x776697Fb1C8111520A311aDddA3e60De68371712
+✅  Granted MINTER_ROLE to system
+   > Saving migration to chain.
+   > Saving artifacts
