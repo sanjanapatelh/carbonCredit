@@ -150,6 +150,21 @@ export default function App() {
         <CacheProvider value={rtlCache}>
           <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
             <CssBaseline />
+            <MDBox
+              sx={{
+                minHeight: "100vh",
+                backgroundImage: "url('/forestco2.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: -1,
+              }}
+            />
             {layout === "dashboard" && (
               <>
                 <Sidenav
@@ -174,6 +189,21 @@ export default function App() {
       ) : (
         <ThemeProvider theme={darkMode ? themeDark : theme}>
           <CssBaseline />
+          <MDBox
+            sx={{
+              minHeight: "100vh",
+              backgroundImage: "url('/forestco2.jpg')",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: -1,
+            }}
+          />
           {layout === "dashboard" && (
             <>
               <Sidenav
