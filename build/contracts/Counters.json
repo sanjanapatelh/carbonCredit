@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/Counters.sol",
     "exportedSymbols": {
-      "Counters": [
-        1182
-      ]
+      "Counters": [1182]
     },
     "id": 1183,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 1110,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "87:23:6"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 1182,
-        "linearizedBaseContracts": [
-          1182
-        ],
+        "linearizedBaseContracts": [1182],
         "name": "Counters",
         "nameLocation": "432:8:6",
         "nodeType": "ContractDefinition",
@@ -167,9 +158,7 @@
                     "pathNode": {
                       "id": 1115,
                       "name": "Counter",
-                      "nameLocations": [
-                        "844:7:6"
-                      ],
+                      "nameLocations": ["844:7:6"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 1114,
                       "src": "844:7:6"
@@ -336,9 +325,7 @@
                     "pathNode": {
                       "id": 1127,
                       "name": "Counter",
-                      "nameLocations": [
-                        "964:7:6"
-                      ],
+                      "nameLocations": ["964:7:6"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 1114,
                       "src": "964:7:6"
@@ -374,9 +361,7 @@
               "src": "1127:176:6",
               "statements": [
                 {
-                  "assignments": [
-                    1147
-                  ],
+                  "assignments": [1147],
                   "declarations": [
                     {
                       "constant": false,
@@ -519,9 +504,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4294967278,
-                        4294967278,
-                        4294967278
+                        4294967278, 4294967278, 4294967278
                       ],
                       "referencedDeclaration": 4294967278,
                       "src": "1177:7:6",
@@ -684,9 +667,7 @@
                     "pathNode": {
                       "id": 1141,
                       "name": "Counter",
-                      "nameLocations": [
-                        "1093:7:6"
-                      ],
+                      "nameLocations": ["1093:7:6"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 1114,
                       "src": "1093:7:6"
@@ -818,9 +799,7 @@
                     "pathNode": {
                       "id": 1169,
                       "name": "Counter",
-                      "nameLocations": [
-                        "1324:7:6"
-                      ],
+                      "nameLocations": ["1324:7:6"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 1114,
                       "src": "1324:7:6"

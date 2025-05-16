@@ -187,9 +187,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/access/IAccessControl.sol",
     "exportedSymbols": {
-      "IAccessControl": [
-        388
-      ]
+      "IAccessControl": [388]
     },
     "id": 389,
     "license": "MIT",
@@ -197,12 +195,7 @@
     "nodes": [
       {
         "id": 317,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "94:23:1"
       },
@@ -220,9 +213,7 @@
         },
         "fullyImplemented": false,
         "id": 388,
-        "linearizedBaseContracts": [
-          388
-        ],
+        "linearizedBaseContracts": [388],
         "name": "IAccessControl",
         "nameLocation": "219:14:1",
         "nodeType": "ContractDefinition",
@@ -1026,11 +1017,7 @@
         "scope": 389,
         "src": "209:2710:1",
         "usedErrors": [],
-        "usedEvents": [
-          327,
-          336,
-          345
-        ]
+        "usedEvents": [327, 336, 345]
       }
     ],
     "src": "94:2826:1"

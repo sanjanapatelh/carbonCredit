@@ -22,9 +22,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -35,12 +33,8 @@
         "@openzeppelin/contracts/security/Pausable.sol",
         "./ProjectNFT.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "CarbonToken"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["CarbonToken"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/contracts/ProjectNFT.sol": {
       "lastModificationDate": 1747276847382,
@@ -63,9 +57,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -76,12 +68,8 @@
         "@openzeppelin/contracts/security/Pausable.sol",
         "@openzeppelin/contracts/utils/Counters.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ProjectNFT"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["ProjectNFT"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/security/Pausable.sol": {
       "lastModificationDate": 1747277011802,
@@ -104,22 +92,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "../utils/Context.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Pausable"
-      ]
+      "imports": ["../utils/Context.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["Pausable"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/access/AccessControl.sol": {
       "lastModificationDate": 1747277011210,
@@ -142,9 +122,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -155,12 +133,8 @@
         "../utils/Strings.sol",
         "../utils/introspection/ERC165.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "AccessControl"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["AccessControl"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC20/ERC20.sol": {
       "lastModificationDate": 1747277011449,
@@ -183,9 +157,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -195,12 +167,8 @@
         "./extensions/IERC20Metadata.sol",
         "../../utils/Context.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ERC20"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["ERC20"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/Counters.sol": {
       "lastModificationDate": 1747277011289,
@@ -223,20 +191,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Counters"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["Counters"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {
       "lastModificationDate": 1747277011479,
@@ -259,9 +221,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -275,12 +235,8 @@
         "../../utils/Strings.sol",
         "../../utils/introspection/ERC165.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ERC721"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["ERC721"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/Context.sol": {
       "lastModificationDate": 1747277011286,
@@ -303,20 +259,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Context"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["Context"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/access/IAccessControl.sol": {
       "lastModificationDate": 1747277011591,
@@ -339,20 +289,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IAccessControl"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IAccessControl"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/Strings.sol": {
       "lastModificationDate": 1747277011824,
@@ -375,23 +319,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "./math/Math.sol",
-        "./math/SignedMath.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Strings"
-      ]
+      "imports": ["./math/Math.sol", "./math/SignedMath.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["Strings"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/introspection/ERC165.sol": {
       "lastModificationDate": 1747277011410,
@@ -414,22 +349,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "./IERC165.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ERC165"
-      ]
+      "imports": ["./IERC165.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["ERC165"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/math/SignedMath.sol": {
       "lastModificationDate": 1747277011822,
@@ -452,20 +379,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "SignedMath"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["SignedMath"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/math/Math.sol": {
       "lastModificationDate": 1747277011793,
@@ -488,20 +409,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Math"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["Math"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/introspection/IERC165.sol": {
       "lastModificationDate": 1747277011655,
@@ -524,20 +439,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC165"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC165"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/utils/Address.sol": {
       "lastModificationDate": 1747277011231,
@@ -560,20 +469,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.1"
-      ],
-      "artifacts": [
-        "Address"
-      ]
+      "versionPragmas": ["^0.8.1"],
+      "artifacts": ["Address"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC721/IERC721.sol": {
       "lastModificationDate": 1747277011714,
@@ -596,22 +499,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "../../utils/introspection/IERC165.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC721"
-      ]
+      "imports": ["../../utils/introspection/IERC165.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC721"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
       "lastModificationDate": 1747277011722,
@@ -634,20 +529,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC721Receiver"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC721Receiver"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
       "lastModificationDate": 1747277011718,
@@ -670,22 +559,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "../IERC721.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC721Metadata"
-      ]
+      "imports": ["../IERC721.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC721Metadata"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
       "lastModificationDate": 1747277011661,
@@ -708,20 +589,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC20"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/node_modules/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
       "lastModificationDate": 1747277011663,
@@ -744,22 +619,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
-      "imports": [
-        "../IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IERC20Metadata"
-      ]
+      "imports": ["../IERC20.sol"],
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["IERC20Metadata"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/contracts/ProjectManager.sol": {
       "lastModificationDate": 1747277621369,
@@ -782,9 +649,7 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
@@ -795,12 +660,8 @@
         "./ProjectNFT.sol",
         "./CarbonToken.sol"
       ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "ProjectManager"
-      ]
+      "versionPragmas": ["^0.8.0"],
+      "artifacts": ["ProjectManager"]
     },
     "/Users/sanjana/Documents/Cornell/Courses/Industrial_blockchain/FinalProject/CarbonCredit/contracts/MyContract.sol": {
       "lastModificationDate": 1747190083897,
@@ -823,20 +684,14 @@
                 "evm.methodIdentifiers",
                 "metadata"
               ],
-              "": [
-                "ast"
-              ]
+              "": ["ast"]
             }
           }
         }
       },
       "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "MyContract"
-      ]
+      "versionPragmas": ["^0.8.20"],
+      "artifacts": ["MyContract"]
     }
   }
 }

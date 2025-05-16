@@ -34,9 +34,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
     "exportedSymbols": {
-      "IERC165": [
-        1447
-      ]
+      "IERC165": [1447]
     },
     "id": 1448,
     "license": "MIT",
@@ -44,12 +42,7 @@
     "nodes": [
       {
         "id": 1437,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "100:23:9"
       },
@@ -67,9 +60,7 @@
         },
         "fullyImplemented": false,
         "id": 1447,
-        "linearizedBaseContracts": [
-          1447
-        ],
+        "linearizedBaseContracts": [1447],
         "name": "IERC165",
         "nameLocation": "415:7:9",
         "nodeType": "ContractDefinition",

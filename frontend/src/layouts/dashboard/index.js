@@ -46,43 +46,29 @@ function Dashboard() {
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
-                color="dark"
-                icon="weekend"
-                title="Bookings"
-                count={281}
-                percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Today's Users"
-                count="2,300"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
                 color="success"
-                icon="store"
-                title="Revenue"
-                count="34k"
+                icon="eco"
+                title="Total Emission Reduction"
+                count="757,489 TCO2"
                 percentage={{
                   color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  amount: "+120",
+                  label: "in the last 24 hr",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="info"
+                icon="swap_horiz"
+                title="Total Transactions Made"
+                count="1,245"
+                percentage={{
+                  color: "success",
+                  amount: "+20",
+                  label: "in the last 24 hr",
                 }}
               />
             </MDBox>
@@ -91,13 +77,28 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="primary"
-                icon="person_add"
-                title="Followers"
-                count="+91"
+                icon="token"
+                title="Total Token Minted"
+                count="757,489"
+                percentage={{
+                  color: "info",
+                  amount: "+120",
+                  label: "in the last 24 hr",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="warning"
+                icon="collections"
+                title="Total NFT Project Approved"
+                count="128"
                 percentage={{
                   color: "success",
-                  amount: "",
-                  label: "Just updated",
+                  amount: "+2",
+                  label: "in the last 24 hr",
                 }}
               />
             </MDBox>
@@ -105,40 +106,40 @@ function Dashboard() {
         </Grid>
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsBarChart
-                  color="info"
-                  title="website views"
-                  description="Last Campaign Performance"
-                  date="campaign sent 2 days ago"
-                  chart={reportsBarChartData}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={12} lg={12}>
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="daily sales"
+                  title="Total Emission Reduction Over Time"
                   description={
                     <>
-                      (<strong>+15%</strong>) increase in today sales.
+                      (<strong>+120</strong>) increase in the last 24 hr.
                     </>
                   }
                   date="updated 4 min ago"
-                  chart={sales}
-                />
-              </MDBox>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="dark"
-                  title="completed tasks"
-                  description="Last Campaign Performance"
-                  date="just updated"
-                  chart={tasks}
+                  chart={{
+                    labels: [
+                      "Jan",
+                      "Feb",
+                      "Mar",
+                      "Apr",
+                      "May",
+                      "Jun",
+                      "Jul",
+                      "Aug",
+                      "Sep",
+                      "Oct",
+                      "Nov",
+                      "Dec",
+                    ],
+                    datasets: {
+                      label: "Emission Reduction (TCO2)",
+                      data: [
+                        10000, 25000, 50000, 90000, 120000, 200000, 350000, 400000, 500000, 600000,
+                        700000, 757489,
+                      ],
+                    },
+                  }}
                 />
               </MDBox>
             </Grid>
@@ -146,11 +147,8 @@ function Dashboard() {
         </MDBox>
         <MDBox>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
+            <Grid item xs={12} md={12} lg={12}>
               <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
             </Grid>
           </Grid>
         </MDBox>

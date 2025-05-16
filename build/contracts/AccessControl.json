@@ -219,30 +219,14 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/access/AccessControl.sol",
     "exportedSymbols": {
-      "AccessControl": [
-        315
-      ],
-      "Context": [
-        1108
-      ],
-      "ERC165": [
-        1435
-      ],
-      "IAccessControl": [
-        388
-      ],
-      "IERC165": [
-        1447
-      ],
-      "Math": [
-        2313
-      ],
-      "SignedMath": [
-        2418
-      ],
-      "Strings": [
-        1411
-      ]
+      "AccessControl": [315],
+      "Context": [1108],
+      "ERC165": [1435],
+      "IAccessControl": [388],
+      "IERC165": [1447],
+      "Math": [2313],
+      "SignedMath": [2418],
+      "Strings": [1411]
     },
     "id": 316,
     "license": "MIT",
@@ -250,12 +234,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "108:23:0"
       },
@@ -314,9 +293,7 @@
             "baseName": {
               "id": 7,
               "name": "Context",
-              "nameLocations": [
-                "1967:7:0"
-              ],
+              "nameLocations": ["1967:7:0"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1108,
               "src": "1967:7:0"
@@ -329,9 +306,7 @@
             "baseName": {
               "id": 9,
               "name": "IAccessControl",
-              "nameLocations": [
-                "1976:14:0"
-              ],
+              "nameLocations": ["1976:14:0"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 388,
               "src": "1976:14:0"
@@ -344,9 +319,7 @@
             "baseName": {
               "id": 11,
               "name": "ERC165",
-              "nameLocations": [
-                "1992:6:0"
-              ],
+              "nameLocations": ["1992:6:0"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1435,
               "src": "1992:6:0"
@@ -367,13 +340,7 @@
         },
         "fullyImplemented": true,
         "id": 315,
-        "linearizedBaseContracts": [
-          315,
-          1435,
-          1447,
-          388,
-          1108
-        ],
+        "linearizedBaseContracts": [315, 1435, 1447, 388, 1108],
         "name": "AccessControl",
         "nameLocation": "1950:13:0",
         "nodeType": "ContractDefinition",
@@ -510,9 +477,7 @@
                 "pathNode": {
                   "id": 21,
                   "name": "RoleData",
-                  "nameLocations": [
-                    "2122:8:0"
-                  ],
+                  "nameLocations": ["2122:8:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 19,
                   "src": "2122:8:0"
@@ -603,10 +568,7 @@
                       "id": 32,
                       "name": "_checkRole",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        92,
-                        131
-                      ],
+                      "overloadedDeclarations": [92, 131],
                       "referencedDeclaration": 92,
                       "src": "2631:10:0",
                       "typeDescriptions": {
@@ -690,9 +652,7 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [
-              1434
-            ],
+            "baseFunctions": [1434],
             "body": {
               "id": 59,
               "nodeType": "Block",
@@ -978,9 +938,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              355
-            ],
+            "baseFunctions": [355],
             "body": {
               "id": 78,
               "nodeType": "Block",
@@ -1261,10 +1219,7 @@
                       "id": 85,
                       "name": "_checkRole",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        92,
-                        131
-                      ],
+                      "overloadedDeclarations": [92, 131],
                       "referencedDeclaration": 131,
                       "src": "3526:10:0",
                       "typeDescriptions": {
@@ -1798,10 +1753,7 @@
                             "id": 105,
                             "name": "revert",
                             "nodeType": "Identifier",
-                            "overloadedDeclarations": [
-                              4294967277,
-                              4294967277
-                            ],
+                            "overloadedDeclarations": [4294967277, 4294967277],
                             "referencedDeclaration": 4294967277,
                             "src": "3970:6:0",
                             "typeDescriptions": {
@@ -1922,9 +1874,7 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [
-              363
-            ],
+            "baseFunctions": [363],
             "body": {
               "id": 145,
               "nodeType": "Block",
@@ -2086,9 +2036,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              371
-            ],
+            "baseFunctions": [371],
             "body": {
               "id": 165,
               "nodeType": "Block",
@@ -2234,9 +2182,7 @@
                 "modifierName": {
                   "id": 154,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "5003:8:0"
-                  ],
+                  "nameLocations": ["5003:8:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 38,
                   "src": "5003:8:0"
@@ -2329,9 +2275,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              379
-            ],
+            "baseFunctions": [379],
             "body": {
               "id": 185,
               "nodeType": "Block",
@@ -2477,9 +2421,7 @@
                 "modifierName": {
                   "id": 174,
                   "name": "onlyRole",
-                  "nameLocations": [
-                    "5429:8:0"
-                  ],
+                  "nameLocations": ["5429:8:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 38,
                   "src": "5429:8:0"
@@ -2572,9 +2514,7 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [
-              387
-            ],
+            "baseFunctions": [387],
             "body": {
               "id": 208,
               "nodeType": "Block",
@@ -2676,9 +2616,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4294967278,
-                        4294967278,
-                        4294967278
+                        4294967278, 4294967278, 4294967278
                       ],
                       "referencedDeclaration": 4294967278,
                       "src": "6125:7:0",
@@ -3045,9 +2983,7 @@
               "src": "7245:174:0",
               "statements": [
                 {
-                  "assignments": [
-                    232
-                  ],
+                  "assignments": [232],
                   "declarations": [
                     {
                       "constant": false,
@@ -4187,11 +4123,7 @@
         "scope": 316,
         "src": "1932:6295:0",
         "usedErrors": [],
-        "usedEvents": [
-          327,
-          336,
-          345
-        ]
+        "usedEvents": [327, 336, 345]
       }
     ],
     "src": "108:8120:0"

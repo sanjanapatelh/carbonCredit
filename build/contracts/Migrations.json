@@ -732,9 +732,7 @@
   "ast": {
     "absolutePath": "project:/contracts/Migrations.sol",
     "exportedSymbols": {
-      "Migrations": [
-        39
-      ]
+      "Migrations": [39]
     },
     "id": 40,
     "license": "MIT",
@@ -742,12 +740,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "32:23:0"
       },
@@ -759,9 +752,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 39,
-        "linearizedBaseContracts": [
-          39
-        ],
+        "linearizedBaseContracts": [39],
         "name": "Migrations",
         "nameLocation": "66:10:0",
         "nodeType": "ContractDefinition",
@@ -1012,9 +1003,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4294967278,
-                        4294967278,
-                        4294967278
+                        4294967278, 4294967278, 4294967278
                       ],
                       "referencedDeclaration": 4294967278,
                       "src": "242:7:0",
@@ -1126,9 +1115,7 @@
                 "modifierName": {
                   "id": 30,
                   "name": "restricted",
-                  "nameLocations": [
-                    "357:10:0"
-                  ],
+                  "nameLocations": ["357:10:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 26,
                   "src": "357:10:0"

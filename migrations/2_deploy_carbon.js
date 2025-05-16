@@ -1,7 +1,7 @@
-const CarbonCreditToken   = artifacts.require("CarbonCreditToken");
-const CarbonCreditSystem  = artifacts.require("CarbonCreditSystem");
+const CarbonCreditToken = artifacts.require("CarbonCreditToken");
+const CarbonCreditSystem = artifacts.require("CarbonCreditSystem");
 
-module.exports = async function(deployer, network, accounts) {
+module.exports = async function (deployer, network, accounts) {
   // 1. Deploy the ERC20 token
   await deployer.deploy(CarbonCreditToken);
   const token = await CarbonCreditToken.deployed();

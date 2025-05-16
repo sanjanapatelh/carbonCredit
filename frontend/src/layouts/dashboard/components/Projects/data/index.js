@@ -71,139 +71,75 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "Project Name", accessor: "project", align: "left" },
+      { Header: "Location", accessor: "location", align: "left" },
+      { Header: "Status", accessor: "status", align: "center" },
+      { Header: "Timestamp", accessor: "timestamp", align: "center" },
     ],
-
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
-            ])}
+        project: "Rainforest",
+        location: (
+          <MDBox display="flex" alignItems="center">
+            <img
+              src="https://flagcdn.com/br.svg"
+              alt="Brazil"
+              width="24"
+              style={{ marginRight: 8 }}
+            />
+            Brazil
           </MDBox>
         ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={60} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
+        status: "Forestry",
+        timestamp: "08 May 2025, 10:42 AM",
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team2, "Romina Hadid"],
-              [team4, "Jessica Doe"],
-            ])}
+        project: "SolarLoop",
+        location: (
+          <MDBox display="flex" alignItems="center">
+            <img
+              src="https://flagcdn.com/ke.svg"
+              alt="Kenya"
+              width="24"
+              style={{ marginRight: 8 }}
+            />
+            Kenya
           </MDBox>
         ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={10} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
+        status: "Solar PV",
+        timestamp: "08 May 2025, 06:17 AM",
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
-            ])}
+        project: "Reforestation",
+        location: (
+          <MDBox display="flex" alignItems="center">
+            <img
+              src="https://flagcdn.com/pe.svg"
+              alt="Peru"
+              width="24"
+              style={{ marginRight: 8 }}
+            />
+            Peru
           </MDBox>
         ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
+        status: "Forestry",
+        timestamp: "08 May 2025, 08:55 AM",
       },
       {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
-              [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
-            ])}
+        project: "BioChar",
+        location: (
+          <MDBox display="flex" alignItems="center">
+            <img
+              src="https://flagcdn.com/de.svg"
+              alt="Germany"
+              width="24"
+              style={{ marginRight: 8 }}
+            />
+            Germany
           </MDBox>
         ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={100} color="success" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $500
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={25} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
-      },
-      {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
-          <MDBox display="flex" py={1}>
-            {avatars([
-              [team1, "Ryan Tompson"],
-              [team4, "Jessica Doe"],
-            ])}
-          </MDBox>
-        ),
-        budget: (
-          <MDTypography variant="caption" color="text" fontWeight="medium">
-            $2,000
-          </MDTypography>
-        ),
-        completion: (
-          <MDBox width="8rem" textAlign="left">
-            <MDProgress value={40} color="info" variant="gradient" label={false} />
-          </MDBox>
-        ),
+        status: "Agriculture",
+        timestamp: "08 May 2025, 06:12 AM",
       },
     ],
   };

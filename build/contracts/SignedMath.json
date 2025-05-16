@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/math/SignedMath.sol",
     "exportedSymbols": {
-      "SignedMath": [
-        2418
-      ]
+      "SignedMath": [2418]
     },
     "id": 2419,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 2315,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "109:23:11"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 2418,
-        "linearizedBaseContracts": [
-          2418
-        ],
+        "linearizedBaseContracts": [2418],
         "name": "SignedMath",
         "nameLocation": "223:10:11",
         "nodeType": "ContractDefinition",
@@ -475,9 +466,7 @@
               "src": "796:162:11",
               "statements": [
                 {
-                  "assignments": [
-                    2363
-                  ],
+                  "assignments": [2363],
                   "declarations": [
                     {
                       "constant": false,

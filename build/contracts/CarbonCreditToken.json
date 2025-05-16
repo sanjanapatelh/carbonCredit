@@ -10204,42 +10204,18 @@
   "ast": {
     "absolutePath": "project:/contracts/CarbonCreditToken.sol",
     "exportedSymbols": {
-      "AccessControl": [
-        315
-      ],
-      "CarbonCreditToken": [
-        3109
-      ],
-      "Context": [
-        1108
-      ],
-      "ERC165": [
-        1435
-      ],
-      "ERC20": [
-        975
-      ],
-      "IAccessControl": [
-        388
-      ],
-      "IERC165": [
-        1447
-      ],
-      "IERC20": [
-        1053
-      ],
-      "IERC20Metadata": [
-        1078
-      ],
-      "Math": [
-        2313
-      ],
-      "SignedMath": [
-        2418
-      ],
-      "Strings": [
-        1411
-      ]
+      "AccessControl": [315],
+      "CarbonCreditToken": [3109],
+      "Context": [1108],
+      "ERC165": [1435],
+      "ERC20": [975],
+      "IAccessControl": [388],
+      "IERC165": [1447],
+      "IERC20": [1053],
+      "IERC20Metadata": [1078],
+      "Math": [2313],
+      "SignedMath": [2418],
+      "Strings": [1411]
     },
     "id": 3110,
     "license": "MIT",
@@ -10247,12 +10223,7 @@
     "nodes": [
       {
         "id": 3059,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "33:23:13"
       },
@@ -10287,9 +10258,7 @@
             "baseName": {
               "id": 3063,
               "name": "ERC20",
-              "nameLocations": [
-                "301:5:13"
-              ],
+              "nameLocations": ["301:5:13"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 975,
               "src": "301:5:13"
@@ -10302,9 +10271,7 @@
             "baseName": {
               "id": 3065,
               "name": "AccessControl",
-              "nameLocations": [
-                "308:13:13"
-              ],
+              "nameLocations": ["308:13:13"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 315,
               "src": "308:13:13"
@@ -10326,15 +10293,7 @@
         "fullyImplemented": true,
         "id": 3109,
         "linearizedBaseContracts": [
-          3109,
-          315,
-          1435,
-          1447,
-          388,
-          975,
-          1078,
-          1053,
-          1108
+          3109, 315, 1435, 1447, 388, 975, 1078, 1053, 1108
         ],
         "name": "CarbonCreditToken",
         "nameLocation": "280:17:13",
@@ -10558,9 +10517,7 @@
                 "modifierName": {
                   "id": 3073,
                   "name": "ERC20",
-                  "nameLocations": [
-                    "411:5:13"
-                  ],
+                  "nameLocations": ["411:5:13"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 975,
                   "src": "411:5:13"
@@ -10711,9 +10668,7 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4294967278,
-                        4294967278,
-                        4294967278
+                        4294967278, 4294967278, 4294967278
                       ],
                       "referencedDeclaration": 4294967278,
                       "src": "605:7:13",
@@ -10906,13 +10861,7 @@
         "scope": 3110,
         "src": "271:430:13",
         "usedErrors": [],
-        "usedEvents": [
-          327,
-          336,
-          345,
-          987,
-          996
-        ]
+        "usedEvents": [327, 336, 345, 987, 996]
       }
     ],
     "src": "33:669:13"
