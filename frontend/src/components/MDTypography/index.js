@@ -54,7 +54,7 @@ const MDTypography = forwardRef(
 
 // Setting default values for the props of MDTypography
 MDTypography.defaultProps = {
-  color: "dark",
+  color: "white",
   fontWeight: false,
   textTransform: "none",
   verticalAlign: "unset",

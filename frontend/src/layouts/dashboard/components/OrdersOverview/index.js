@@ -26,18 +26,18 @@ import TimelineItem from "examples/Timeline/TimelineItem";
 
 function OrdersOverview() {
   return (
-    <Card sx={{ height: "100%" }}>
+    <Card sx={{ height: "100%", backgroundColor: 'rgba(30, 30, 30, 0.7)', color: 'white', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', borderRadius: '20px', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.18)' }}>
       <MDBox pt={3} px={3}>
-        <MDTypography variant="h6" fontWeight="medium">
+        <MDTypography variant="h6" fontWeight="medium" color="white">
           Orders overview
         </MDTypography>
         <MDBox mt={0} mb={2}>
-          <MDTypography variant="button" color="text" fontWeight="regular">
-            <MDTypography display="inline" variant="body2" verticalAlign="middle">
+          <MDTypography variant="button" color="white" fontWeight="regular">
+            <MDTypography display="inline" variant="body2" verticalAlign="middle" color="white">
               <Icon sx={{ color: ({ palette: { success } }) => success.main }}>arrow_upward</Icon>
             </MDTypography>
             &nbsp;
-            <MDTypography variant="button" color="text" fontWeight="medium">
+            <MDTypography variant="button" color="white" fontWeight="medium">
               24%
             </MDTypography>{" "}
             this month

@@ -61,9 +61,9 @@ export default function data() {
     ));
 
   const Company = ({ image, name }) => (
-    <MDBox display="flex" alignItems="center" lineHeight={1}>
+    <MDBox display="flex" alignItems="center" lineHeight={1} style={{color: 'white'}}>
       <MDAvatar src={image} name={name} size="sm" />
-      <MDTypography variant="button" fontWeight="medium" ml={1} lineHeight={1}>
+      <MDTypography variant="button" fontWeight="medium" ml={1} lineHeight={1} color="white">
         {name}
       </MDTypography>
     </MDBox>

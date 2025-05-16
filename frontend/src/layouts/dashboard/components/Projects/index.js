@@ -60,10 +60,10 @@ function Projects() {
   );
 
   return (
-    <Card>
+    <Card sx={{ backgroundColor: 'rgba(30, 30, 30, 0.7)', color: 'white', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', borderRadius: '20px', backdropFilter: 'blur(4px)', border: '1px solid rgba(255,255,255,0.18)' }}>
       <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <MDBox>
-          <MDTypography variant="h6" gutterBottom>
+          <MDTypography variant="h6" gutterBottom color="white">
             Verified Carbon Activity
           </MDTypography>
         </MDBox>
