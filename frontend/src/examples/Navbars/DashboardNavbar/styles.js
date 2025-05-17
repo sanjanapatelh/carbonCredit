@@ -27,7 +27,7 @@ function navbar(theme, ownerState) {
     backgroundColor:
       transparentNavbar || absolute
         ? `${transparent.main} !important`
-        : rgba(darkMode ? background.default : white.main, 0.8),
+        : rgba(darkMode ? "rgb(17, 24, 39)" : white.main, 0.95),
 
     color: () => {
       let color;
@@ -37,7 +37,7 @@ function navbar(theme, ownerState) {
       } else if (transparentNavbar) {
         color = text.main;
       } else {
-        color = dark.main;
+        color = white.main;
       }
 
       return color;
@@ -51,6 +51,7 @@ function navbar(theme, ownerState) {
     paddingBottom: pxToRem(8),
     paddingRight: absolute ? pxToRem(8) : 0,
     paddingLeft: absolute ? pxToRem(16) : 0,
+    border: "1px solid rgba(255,255,255,0.1)",
 
     "& > *": {
       transition: transitions.create("all", {

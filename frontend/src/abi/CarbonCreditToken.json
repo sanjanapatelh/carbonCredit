@@ -10204,18 +10204,42 @@
   "ast": {
     "absolutePath": "project:/contracts/CarbonCreditToken.sol",
     "exportedSymbols": {
-      "AccessControl": [315],
-      "CarbonCreditToken": [3109],
-      "Context": [1108],
-      "ERC165": [1435],
-      "ERC20": [975],
-      "IAccessControl": [388],
-      "IERC165": [1447],
-      "IERC20": [1053],
-      "IERC20Metadata": [1078],
-      "Math": [2313],
-      "SignedMath": [2418],
-      "Strings": [1411]
+      "AccessControl": [
+        315
+      ],
+      "CarbonCreditToken": [
+        3109
+      ],
+      "Context": [
+        1108
+      ],
+      "ERC165": [
+        1435
+      ],
+      "ERC20": [
+        975
+      ],
+      "IAccessControl": [
+        388
+      ],
+      "IERC165": [
+        1447
+      ],
+      "IERC20": [
+        1053
+      ],
+      "IERC20Metadata": [
+        1078
+      ],
+      "Math": [
+        2313
+      ],
+      "SignedMath": [
+        2418
+      ],
+      "Strings": [
+        1411
+      ]
     },
     "id": 3110,
     "license": "MIT",
@@ -10223,7 +10247,12 @@
     "nodes": [
       {
         "id": 3059,
-        "literals": ["solidity", "^", "0.8", ".0"],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
         "nodeType": "PragmaDirective",
         "src": "33:23:13"
       },
@@ -10258,7 +10287,9 @@
             "baseName": {
               "id": 3063,
               "name": "ERC20",
-              "nameLocations": ["301:5:13"],
+              "nameLocations": [
+                "301:5:13"
+              ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 975,
               "src": "301:5:13"
@@ -10271,7 +10302,9 @@
             "baseName": {
               "id": 3065,
               "name": "AccessControl",
-              "nameLocations": ["308:13:13"],
+              "nameLocations": [
+                "308:13:13"
+              ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 315,
               "src": "308:13:13"
@@ -10292,7 +10325,17 @@
         },
         "fullyImplemented": true,
         "id": 3109,
-        "linearizedBaseContracts": [3109, 315, 1435, 1447, 388, 975, 1078, 1053, 1108],
+        "linearizedBaseContracts": [
+          3109,
+          315,
+          1435,
+          1447,
+          388,
+          975,
+          1078,
+          1053,
+          1108
+        ],
         "name": "CarbonCreditToken",
         "nameLocation": "280:17:13",
         "nodeType": "ContractDefinition",
@@ -10515,7 +10558,9 @@
                 "modifierName": {
                   "id": 3073,
                   "name": "ERC20",
-                  "nameLocations": ["411:5:13"],
+                  "nameLocations": [
+                    "411:5:13"
+                  ],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 975,
                   "src": "411:5:13"
@@ -10665,7 +10710,11 @@
                       "id": 3093,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "605:7:13",
                       "typeDescriptions": {
@@ -10857,7 +10906,13 @@
         "scope": 3110,
         "src": "271:430:13",
         "usedErrors": [],
-        "usedEvents": [327, 336, 345, 987, 996]
+        "usedEvents": [
+          327,
+          336,
+          345,
+          987,
+          996
+        ]
       }
     ],
     "src": "33:669:13"
@@ -10998,10 +11053,274 @@
       "links": {},
       "address": "0x57ff0205C33CFE7923a29E9560251f1E5DD05f5e",
       "transactionHash": "0x7e45c200378274995b46ba4016b117144abce66698e0cce88fae7e3361502f6b"
+    },
+    "1747424483524": {
+      "events": {
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xC7c0A1Ce024349b978CBb31CE1c5365f708f225d",
+      "transactionHash": "0xa1fdb8ab9414d90653d62b76274934af86383c65870f8d6e43a8e6c7b9aac1c2"
+    },
+    "1747438987656": {
+      "events": {
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xBd2E112Bd408F35F6EBe337B45dFc20e4C3D41BE",
+      "transactionHash": "0x9b7a962e86be01d179236bf24b971a8430e6dcc294f5f3491eb841a5382f05a2"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-05-15T20:14:26.475Z",
+  "updatedAt": "2025-05-16T23:43:37.030Z",
   "networkType": "ethereum",
   "devdoc": {
     "events": {

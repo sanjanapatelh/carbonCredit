@@ -1,110 +1,141 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+// src/layouts/dashboard/Dashboard.js
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
+import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
-
-// Material Dashboard 2 React example components
+import MDTypography from "components/MDTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
-// Data
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
-
-// Dashboard components
+import { initWeb3, systemContract, tokenContract } from "../../ethereum";
 import Projects from "layouts/dashboard/components/Projects";
-import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
-  const { sales, tasks } = reportsLineChartData;
+  const [totalCredits, setTotalCredits] = useState("0");
+  const [totalProjects, setTotalProjects] = useState("0");
+  const [totalTxs, setTotalTxs] = useState("0");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await initWeb3();
+
+        // 1) Total carbon credits minted
+        const token = tokenContract();
+        const supply = await token.methods.totalSupply().call();
+        setTotalCredits(supply);
+
+        // 2) Total projects registered
+        const sys = systemContract();
+        const created = await sys.getPastEvents("ProjectCreated", {
+          fromBlock: 0,
+          toBlock: "latest",
+        });
+        setTotalProjects(String(created.length));
+
+        // 3) Total "transactions" = sum of all contract events
+        const [reqs, responses, finals, regs, slashes] = await Promise.all([
+          sys.getPastEvents("ValidationRequested", { fromBlock: 0, toBlock: "latest" }),
+          sys.getPastEvents("ValidatorResponded", { fromBlock: 0, toBlock: "latest" }),
+          sys.getPastEvents("ValidationFinalized", { fromBlock: 0, toBlock: "latest" }),
+          sys.getPastEvents("ValidatorRegistered", { fromBlock: 0, toBlock: "latest" }),
+          sys.getPastEvents("ValidatorSlashed", { fromBlock: 0, toBlock: "latest" }),
+        ]);
+
+        const txCount =
+          created.length +
+          reqs.length +
+          responses.length +
+          finals.length +
+          regs.length +
+          slashes.length;
+
+        setTotalTxs(String(txCount));
+      } catch (err) {
+        console.error("Dashboard init failed", err);
+      }
+    })();
+  }, []);
+
+  // Optional: line chart data if you have it
+  const { sales, tasks } = { sales: [], tasks: [] };
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
+          {/* Total Emission Reduction */}
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="success"
                 icon="eco"
                 title="Total Emission Reduction"
-                count="757,489 TCO2"
+                count={`${totalCredits} TCO2`}
                 percentage={{
                   color: "success",
-                  amount: "+120",
-                  label: "in the last 24 hr",
+                  amount: `+0`,
+                  label: "since genesis",
                 }}
               />
             </MDBox>
           </Grid>
+          {/* Total Ethereum Transactions (contract interactions) */}
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="info"
                 icon="swap_horiz"
                 title="Total Transactions Made"
-                count="1,245"
+                count={totalTxs}
                 percentage={{
                   color: "success",
-                  amount: "+20",
-                  label: "in the last 24 hr",
+                  amount: "+0",
+                  label: "since genesis",
                 }}
               />
             </MDBox>
           </Grid>
+          {/* Total Carbon Credits Minted */}
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="primary"
                 icon="token"
-                title="Total Token Minted"
-                count="757,489"
+                title="Total Carbon Credits"
+                count={totalCredits}
                 percentage={{
                   color: "info",
-                  amount: "+120",
-                  label: "in the last 24 hr",
+                  amount: "+0",
+                  label: "since genesis",
                 }}
               />
             </MDBox>
           </Grid>
+          {/* Total Projects Registered */}
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="warning"
                 icon="collections"
-                title="Total NFT Project Approved"
-                count="128"
+                title="Projects Registered"
+                count={totalProjects}
                 percentage={{
                   color: "success",
-                  amount: "+2",
-                  label: "in the last 24 hr",
+                  amount: "+0",
+                  label: "since genesis",
                 }}
               />
             </MDBox>
           </Grid>
         </Grid>
+
         <MDBox mt={4.5}>
+          {/* (Optional) Line chart for trends */}
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <MDBox mb={3}>
@@ -113,38 +144,20 @@ function Dashboard() {
                   title="Total Emission Reduction Over Time"
                   description={
                     <>
-                      (<strong>+120</strong>) increase in the last 24 hr.
+                      (<strong>+0</strong>) since genesis.
                     </>
                   }
-                  date="updated 4 min ago"
+                  date="updated just now"
                   chart={{
-                    labels: [
-                      "Jan",
-                      "Feb",
-                      "Mar",
-                      "Apr",
-                      "May",
-                      "Jun",
-                      "Jul",
-                      "Aug",
-                      "Sep",
-                      "Oct",
-                      "Nov",
-                      "Dec",
-                    ],
-                    datasets: {
-                      label: "Emission Reduction (TCO2)",
-                      data: [
-                        10000, 25000, 50000, 90000, 120000, 200000, 350000, 400000, 500000, 600000,
-                        700000, 757489,
-                      ],
-                    },
+                    labels: [], // your labels
+                    datasets: { label: "TCO2", data: [] }, // your data
                   }}
                 />
               </MDBox>
             </Grid>
           </Grid>
         </MDBox>
+
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>

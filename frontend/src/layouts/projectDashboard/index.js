@@ -1,20 +1,24 @@
 // src/layouts/dashboard/ProjectDashboard.js
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Web3 from "web3";
+import PropTypes from "prop-types";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDButton from "components/MDButton";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import TextField from "@mui/material/TextField";
-import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+
+// Icons
+import { Assessment, HowToReg, Gavel } from "@mui/icons-material";
 
 // Layout
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -24,30 +28,39 @@ import Footer from "examples/Footer";
 // Ethereum helpers
 import { initWeb3, getAccounts, systemContract } from "../../ethereum";
 
-function ProjectDashboard() {
+export default function ProjectDashboard() {
   const [account, setAccount] = useState("");
   const [web3Instance, setWeb3Instance] = useState(null);
+
+  // all pending validation requests
   const [requests, setRequests] = useState([]);
   const [validatorRegistered, setValidatorRegistered] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [amount, setAmount] = useState("");
-  const [isRegisterFlow, setIsRegisterFlow] = useState(false);
-  const [validationDialogOpen, setValidationDialogOpen] = useState(false);
+
+  // cache of project metadata
+  const [projectsMeta, setProjectsMeta] = useState({});
+
+  // detail modal state
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
-  const [currentReq, setCurrentReq] = useState(null);
-  const [validationCredits, setValidationCredits] = useState("");
   const [projectDetails, setProjectDetails] = useState(null);
 
-  // connect wallet
+  // register dialog state
+  const [regDialogOpen, setRegDialogOpen] = useState(false);
+  const [regAmount, setRegAmount] = useState("");
+
+  // validation dialog state
+  const [validationDialogOpen, setValidationDialogOpen] = useState(false);
+  const [currentReq, setCurrentReq] = useState(null);
+  const [validationCredits, setValidationCredits] = useState("");
+
+  // connect wallet + load metadata & registration
   const connectWallet = async () => {
     await initWeb3();
     const [acct] = await getAccounts();
     setAccount(acct);
-    if (window.ethereum) {
-      const web3 = new Web3(window.ethereum);
-      setWeb3Instance(web3);
-    }
-    // check registration
+
+    if (window.ethereum) setWeb3Instance(new Web3(window.ethereum));
+
+    // check validator status
     try {
       const sys = systemContract();
       const info = await sys.methods.validators(acct).call();
@@ -55,81 +68,93 @@ function ProjectDashboard() {
     } catch (err) {
       console.error(err);
     }
+
+    // cache all project metadata
+    try {
+      const sys = systemContract();
+      const evts = await sys.getPastEvents("ProjectCreated", {
+        fromBlock: 0,
+        toBlock: "latest",
+      });
+      const map = {};
+      evts.forEach((ev) => {
+        const id = Number(ev.returnValues.projectId);
+        let meta = { name: "", description: "", location: "" };
+        try {
+          meta = JSON.parse(ev.returnValues.metadataURI);
+        } catch {}
+        map[id] = meta;
+      });
+      setProjectsMeta(map);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  // fetch validation requests and response status
+  // load validation requests
   useEffect(() => {
     if (!account || !validatorRegistered) return;
     (async () => {
-      try {
-        const sys = systemContract();
-        const events = await sys.getPastEvents("ValidationRequested", {
-          fromBlock: 0,
-          toBlock: "latest",
-        });
-        const reqs = await Promise.all(
-          events.map(async (ev) => {
-            const projectId = ev.returnValues.projectId;
-            const requester = ev.returnValues.owner;
-            const resp = await sys.methods.responses(projectId, account).call();
-            return {
-              projectId,
-              requester,
-              responded: resp.responded,
-              credits: resp.credits,
-            };
-          })
-        );
-        setRequests(reqs);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
+      const sys = systemContract();
+      const evts = await sys.getPastEvents("ValidationRequested", {
+        fromBlock: 0,
+        toBlock: "latest",
+      });
+      const reqs = await Promise.all(
+        evts.map(async (ev) => {
+          const projectId = Number(ev.returnValues.projectId);
+          const requester = ev.returnValues.owner;
+          const resp = await sys.methods.responses(projectId, account).call();
+          return {
+            projectId,
+            requester,
+            responded: resp.responded,
+            credits: resp.credits,
+          };
+        })
+      );
+      setRequests(reqs);
+    })().catch(console.error);
   }, [account, validatorRegistered]);
 
-  // modal handlers for register/stake
-  const openRegisterDialog = (register) => {
-    setIsRegisterFlow(register);
-    setAmount("");
-    setDialogOpen(true);
-  };
-  const closeDialog = () => setDialogOpen(false);
-
-  // view details handler
-  const openDetailDialog = async (req) => {
-    setCurrentReq(req);
-    try {
-      const sys = systemContract();
-      const details = await sys.methods.projects(req.projectId).call();
-      setProjectDetails(details);
-    } catch (err) {
-      console.error(err);
-      setProjectDetails(null);
-    }
+  // open detail dialog
+  const openDetailDialog = (req) => {
+    const meta = projectsMeta[req.projectId] || {};
+    setProjectDetails({
+      projectId: req.projectId,
+      owner: req.requester,
+      ...meta,
+      status: req.responded ? `Assigned ${req.credits}` : "Pending",
+    });
     setDetailDialogOpen(true);
   };
   const closeDetailDialog = () => setDetailDialogOpen(false);
 
-  const handleConfirm = async () => {
-    if (!amount || !account || !web3Instance) return;
+  // open register dialog
+  const openRegDialog = () => {
+    setRegAmount("");
+    setRegDialogOpen(true);
+  };
+  const closeRegDialog = () => setRegDialogOpen(false);
+
+  // handle registration
+  const handleRegister = async () => {
+    if (!account || !web3Instance) return;
     try {
       const sys = systemContract();
-      const wei = web3Instance.utils.toWei(amount.toString(), "ether");
-      const valueHex = web3Instance.utils.toHex(wei);
-      const method = isRegisterFlow ? sys.methods.registerValidator() : sys.methods.stake();
-      const gas = await method.estimateGas({ from: account, value: valueHex });
-      await method.send({ from: account, value: valueHex, gas });
+      const wei = web3Instance.utils.toWei(regAmount.toString(), "ether");
+      const gas = await sys.methods.registerValidator().estimateGas({ from: account, value: wei });
+      await sys.methods.registerValidator().send({ from: account, value: wei, gas });
       setValidatorRegistered(true);
-      closeDialog();
-      alert(`${isRegisterFlow ? "Registered" : "Staked"} successfully for ${amount} ETH.`);
+      closeRegDialog();
+      alert("Registered as validator!");
     } catch (err) {
-      console.error("Register/Stake error data:", err.data || err);
-      const message = err.data?.message || err.message || "Transaction reverted";
-      alert(`Transaction failed: ${message}`);
+      console.error(err);
+      alert("Registration failed: " + err.message);
     }
   };
 
-  // validation handlers
+  // open assign‐credits dialog
   const openValidationDialog = (req) => {
     setCurrentReq(req);
     setValidationCredits("");
@@ -137,6 +162,7 @@ function ProjectDashboard() {
   };
   const closeValidationDialog = () => setValidationDialogOpen(false);
 
+  // submit validation
   const handleSubmitValidation = async () => {
     if (!validationCredits || !account) return;
     try {
@@ -148,8 +174,9 @@ function ProjectDashboard() {
         .respondValidation(currentReq.projectId, validationCredits)
         .send({ from: account, gas });
       alert(`Assigned ${validationCredits} credits to project #${currentReq.projectId}`);
-      setRequests((reqs) =>
-        reqs.map((r) =>
+      // update local state
+      setRequests((rs) =>
+        rs.map((r) =>
           r.projectId === currentReq.projectId
             ? { ...r, responded: true, credits: validationCredits }
             : r
@@ -164,120 +191,191 @@ function ProjectDashboard() {
 
   return (
     <DashboardLayout>
-      <DashboardNavbar />
-      <MDBox p={3} pb={1} display="flex" justifyContent="space-between" alignItems="center">
-        <MDTypography variant="h4" fontWeight="bold">
+      <Box p={3} display="flex" justifyContent="space-between" alignItems="center">
+        <Typography variant="h4" sx={{ color: "#fff", fontWeight: "bold" }}>
           Validation Dashboard
-        </MDTypography>
+        </Typography>
         {!account ? (
-          <MDButton variant="contained" color="primary" onClick={connectWallet}>
+          <Button variant="contained" color="info" onClick={connectWallet}>
             Connect Wallet
-          </MDButton>
+          </Button>
         ) : !validatorRegistered ? (
-          <MDButton variant="contained" color="primary" onClick={() => openRegisterDialog(true)}>
+          <Button variant="contained" color="info" onClick={openRegDialog}>
             Register as Validator
-          </MDButton>
+          </Button>
         ) : null}
-      </MDBox>
+      </Box>
 
-      <MDBox p={3}>
+      <Box p={3}>
         <Grid container spacing={3}>
+          {account && validatorRegistered && requests.length === 0 && (
+            <Grid item xs={12}>
+              <Typography sx={{ color: "#fff" }}>No pending requests.</Typography>
+            </Grid>
+          )}
           {account &&
             validatorRegistered &&
-            (requests.length ? (
-              requests.map((req) => (
-                <Grid key={req.projectId} item xs={12} sm={6} md={4}>
-                  <Card>
-                    <MDBox display="flex" alignItems="center" p={2}>
-                      <Avatar src="/logo192.png" sx={{ width: 48, height: 48, mr: 2 }} />
-                      <MDBox>
-                        <MDTypography variant="h6">Project #{req.projectId}</MDTypography>
-                        <MDTypography variant="caption">Requested by {req.requester}</MDTypography>
-                      </MDBox>
-                    </MDBox>
-                    <MDBox p={2} pt={0} display="flex" justifyContent="space-between">
-                      <MDButton
+            requests.map((req) => (
+              <Grid key={req.projectId} item xs={12} sm={6} md={4}>
+                <Card
+                  sx={{
+                    backgroundColor: "rgba(17,24,39,0.95)",
+                    borderRadius: 2,
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+                    transform: "scale(0.7)",
+                    transition: "all 0.2s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(0.72)",
+                      boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                    },
+                  }}
+                >
+                  <Box p={2}>
+                    <Box display="flex" justifyContent="space-between" alignItems="center">
+                      <Box
+                        sx={{
+                          width: 40,
+                          height: 40,
+                          background: "linear-gradient(45deg, #2196f3 30%, #21cbf3 90%)",
+                          borderRadius: 1.5,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: "#fff",
+                          boxShadow: "0 4px 12px rgba(33,150,243,0.3)",
+                        }}
+                      >
+                        <Assessment />
+                      </Box>
+                      <Box textAlign="right">
+                        <Typography variant="h6" sx={{ color: "#fff", fontWeight: 600 }}>
+                          {projectsMeta[req.projectId]?.name || `Project #${req.projectId}`}
+                        </Typography>
+                        <Box
+                          component="span"
+                          sx={{
+                            backgroundColor: req.responded
+                              ? "rgba(244,67,54,0.15)"
+                              : "rgba(76,175,80,0.15)",
+                            color: req.responded ? "#f44336" : "#4caf50",
+                            px: 1.5,
+                            py: 0.5,
+                            borderRadius: 1,
+                            fontSize: "0.75rem",
+                            fontWeight: 600,
+                            border: req.responded
+                              ? "1px solid rgba(244,67,54,0.3)"
+                              : "1px solid rgba(76,175,80,0.3)",
+                          }}
+                        >
+                          {req.responded ? `Assigned ${req.credits}` : "Pending"}
+                        </Box>
+                      </Box>
+                    </Box>
+
+                    <Box display="flex" justifyContent="flex-end" gap={1.5} mt={2}>
+                      <Button
                         size="small"
                         variant="outlined"
+                        startIcon={<HowToReg />}
                         onClick={() => openDetailDialog(req)}
+                        sx={{
+                          color: "#90caf9",
+                          borderColor: "rgba(144,202,249,0.5)",
+                          textTransform: "none",
+                        }}
                       >
                         View Details
-                      </MDButton>
-                      {req.responded ? (
-                        <MDButton size="small" variant="contained" color="error" disabled>
-                          Assigned: {req.credits}
-                        </MDButton>
-                      ) : (
-                        <MDButton
+                      </Button>
+                      {!req.responded && (
+                        <Button
                           size="small"
                           variant="contained"
-                          color="success"
+                          startIcon={<Gavel />}
                           onClick={() => openValidationDialog(req)}
+                          sx={{
+                            background: "linear-gradient(45deg,#4caf50 30%,#66bb6a 90%)",
+                            textTransform: "none",
+                          }}
                         >
                           Assign Credits
-                        </MDButton>
+                        </Button>
                       )}
-                    </MDBox>
-                  </Card>
-                </Grid>
-              ))
-            ) : (
-              <Grid item xs={12}>
-                <MDTypography>No pending requests.</MDTypography>
+                    </Box>
+                  </Box>
+                </Card>
               </Grid>
             ))}
         </Grid>
-      </MDBox>
+      </Box>
 
       {/* Detail Modal */}
-      <Dialog open={detailDialogOpen} onClose={closeDetailDialog} fullWidth maxWidth="sm">
-        <DialogTitle>Project Details #{currentReq?.projectId}</DialogTitle>
+      <Dialog
+        open={detailDialogOpen}
+        onClose={closeDetailDialog}
+        fullWidth
+        maxWidth="sm"
+        PaperProps={{ sx: { backgroundColor: "rgba(17,24,39,0.95)", color: "#fff" } }}
+      >
+        <DialogTitle>Project Details</DialogTitle>
         <DialogContent>
-          {projectDetails ? (
-            <MDBox>
-              <MDTypography>
-                <strong>Owner:</strong> {projectDetails.owner}
-              </MDTypography>
-              <MDTypography>
+          {projectDetails && (
+            <Box>
+              <Typography color="white">
+                <strong>Name:</strong> {projectDetails.name}
+              </Typography>
+              <Typography color="white">
+                <strong>Description:</strong> {projectDetails.description}
+              </Typography>
+              <Typography color="white">
+                <strong>Location:</strong> {projectDetails.location}
+              </Typography>
+              <Typography color="white">
                 <strong>Status:</strong> {projectDetails.status}
-              </MDTypography>
-              <MDTypography>
-                <strong>Metadata URI:</strong> {projectDetails.metadataURI}
-              </MDTypography>
-            </MDBox>
-          ) : (
-            <MDTypography>Loading...</MDTypography>
+              </Typography>
+              <Typography color="white">
+                <strong>Owner:</strong> {projectDetails.owner}
+              </Typography>
+            </Box>
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeDetailDialog}>Close</Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Register/Stake Modal */}
-      <Dialog open={dialogOpen} onClose={closeDialog} fullWidth maxWidth="sm">
-        <DialogTitle>{isRegisterFlow ? "Register as Validator" : "Stake More ETH"}</DialogTitle>
-        <DialogContent>
-          <TextField
-            fullWidth
-            type="number"
-            label="Amount (ETH)"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            margin="normal"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={closeDialog}>Cancel</Button>
-          <Button onClick={handleConfirm} disabled={!amount} variant="contained" color="primary">
-            {isRegisterFlow ? "Register" : "Stake"}
+          <Button onClick={closeDetailDialog} sx={{ color: "#fff" }}>
+            Close
           </Button>
         </DialogActions>
       </Dialog>
 
-      {/* Validation Modal */}
+      {/* Register Modal */}
+      <Dialog open={regDialogOpen} onClose={closeRegDialog} fullWidth maxWidth="sm">
+        <DialogTitle>Register as Validator</DialogTitle>
+        <DialogContent>
+          <TextField
+            fullWidth
+            type="number"
+            label="Stake Amount (ETH)"
+            value={regAmount}
+            onChange={(e) => setRegAmount(e.target.value)}
+            InputLabelProps={{ sx: { color: "#b0bec5" } }}
+            InputProps={{ sx: { color: "#fff" } }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeRegDialog} sx={{ color: "#fff" }}>
+            Cancel
+          </Button>
+          <Button onClick={handleRegister} disabled={!regAmount} variant="contained" color="info">
+            Register
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Assign Credits Modal */}
       <Dialog open={validationDialogOpen} onClose={closeValidationDialog} fullWidth maxWidth="sm">
-        <DialogTitle>Assign Credits to Project #{currentReq?.projectId}</DialogTitle>
+        <DialogTitle>Assign Credits</DialogTitle>
         <DialogContent>
           <TextField
             fullWidth
@@ -285,25 +383,28 @@ function ProjectDashboard() {
             label="Credits"
             value={validationCredits}
             onChange={(e) => setValidationCredits(e.target.value)}
-            margin="normal"
+            InputLabelProps={{ sx: { color: "#b0bec5" } }}
+            InputProps={{ sx: { color: "#fff" } }}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeValidationDialog}>Cancel</Button>
+          <Button onClick={closeValidationDialog} sx={{ color: "#fff" }}>
+            Cancel
+          </Button>
           <Button
             onClick={handleSubmitValidation}
             disabled={!validationCredits}
             variant="contained"
-            color="primary"
+            color="success"
           >
             Submit
           </Button>
         </DialogActions>
       </Dialog>
-
-      {/* <Footer /> */}
     </DashboardLayout>
   );
 }
 
-export default ProjectDashboard;
+ProjectDashboard.propTypes = {
+  // no props
+};
